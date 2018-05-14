@@ -29,6 +29,9 @@
 #import "HttpRequest/UNISimpleRequest.h"
 #import "UNIUrlConnection.h"
 
+@class UNIHTTPResponseWrapper;
+@protocol NSURLSessionDelegate;
+
 #define BOUNDARY @"---------------------------17237809831461299884346131229"
 
 typedef void (^UNIAsyncResponse)(UNIHTTPJsonResponse* jsonResponse, NSError* error);
@@ -37,6 +40,8 @@ typedef void (^UNIAsyncResponse)(UNIHTTPJsonResponse* jsonResponse, NSError* err
 
 +(UNIHTTPResponse*) requestSync:(UNIHTTPRequest*) request error:(NSError**) error;
 
-+(UNIUrlConnection*) requestAsync:(UNIHTTPRequest*) request handler:(void (^)(UNIHTTPResponse*, NSError*))handler;
++ (UNIHTTPResponseWrapper *)requestSync:(UNIHTTPRequest *)request withDelegate:(id <NSURLSessionDelegate>)delegate;
+
++(UNIUrlConnection*)requestAsync:(UNIHTTPRequest*) request handler:(void (^)(UNIHTTPResponse*, NSError*))handler;
 
 @end

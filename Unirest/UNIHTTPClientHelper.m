@@ -26,6 +26,7 @@
 #import "UNIHTTPClientHelper.h"
 #import "Base64.h"
 #import "UNIRest.h"
+#import "UNIHTTPResponseWrapper.h"
 
 @interface UNIHTTPClientHelper()
 + (NSString*) encodeURI:(NSString*)value;
@@ -201,10 +202,34 @@
 
 +(UNIHTTPResponse*) requestSync:(UNIHTTPRequest*) request error:(NSError**) error {
     NSMutableURLRequest* requestObj = [self prepareRequest:request];
-    
+
     NSHTTPURLResponse * response = nil;
     NSData * data = [NSURLConnection sendSynchronousRequest:requestObj returningResponse:&response error:error];
     return [self getResponse:response data:data];
+}
+
++(UNIHTTPResponseWrapper *)requestSync:(UNIHTTPRequest *)request withDelegate:(id <NSURLSessionDelegate>)delegate {
+    NSMutableURLRequest* requestObj = [self prepareRequest:request];
+
+    __block NSData *data = nil;
+    __block NSURLResponse *response = nil;
+    __block NSError *error = nil;
+    dispatch_semaphore_t semaphore = dispatch_semaphore_create(0);
+
+    NSURLSessionConfiguration *config = [NSURLSessionConfiguration defaultSessionConfiguration];
+    NSURLSession *session = [NSURLSession sessionWithConfiguration:config delegate:(id <NSURLSessionDelegate>) delegate delegateQueue:nil];
+
+    NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:requestObj completionHandler:^(NSData *taskData, NSURLResponse *urlResponse, NSError *responseError) {
+        error = responseError;
+        data = taskData;
+        response = urlResponse;
+        dispatch_semaphore_signal(semaphore);
+    }];
+    [dataTask resume];
+    dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
+    UNIHTTPResponseWrapper *wrapper = [UNIHTTPResponseWrapper wrapperWithResponse:[self getResponse:response data:data] error:error];
+
+    return wrapper;
 }
 
 +(UNIUrlConnection*) requestAsync:(UNIHTTPRequest*) request handler:(void (^)(UNIHTTPResponse*, NSError*))handler {

@@ -28,6 +28,7 @@
 		A9E78BFA16E9803E006B80FD /* UNIHTTPResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = A9E78BEB16E9803E006B80FD /* UNIHTTPResponse.m */; };
 		A9E78BFB16E9803E006B80FD /* UNIHTTPStringResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = A9E78BED16E9803E006B80FD /* UNIHTTPStringResponse.m */; };
 		A9E78BFC16E9803E006B80FD /* UNIJsonNode.m in Sources */ = {isa = PBXBuildFile; fileRef = A9E78BEF16E9803E006B80FD /* UNIJsonNode.m */; };
+		FCBE0637B2092B97DE75B147 /* UNIHTTPResponseWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = FCBE0A37EFBB4DA28251BC03 /* UNIHTTPResponseWrapper.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -91,6 +92,8 @@
 		A9E78BED16E9803E006B80FD /* UNIHTTPStringResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UNIHTTPStringResponse.m; sourceTree = "<group>"; };
 		A9E78BEE16E9803E006B80FD /* UNIJsonNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UNIJsonNode.h; sourceTree = "<group>"; };
 		A9E78BEF16E9803E006B80FD /* UNIJsonNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UNIJsonNode.m; sourceTree = "<group>"; };
+		FCBE0A37EFBB4DA28251BC03 /* UNIHTTPResponseWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UNIHTTPResponseWrapper.m; sourceTree = "<group>"; };
+		FCBE0E664F1B86DE5F5A9076 /* UNIHTTPResponseWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UNIHTTPResponseWrapper.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -220,6 +223,8 @@
 				A9E78BED16E9803E006B80FD /* UNIHTTPStringResponse.m */,
 				A9E78BEE16E9803E006B80FD /* UNIJsonNode.h */,
 				A9E78BEF16E9803E006B80FD /* UNIJsonNode.m */,
+				FCBE0A37EFBB4DA28251BC03 /* UNIHTTPResponseWrapper.m */,
+				FCBE0E664F1B86DE5F5A9076 /* UNIHTTPResponseWrapper.h */,
 			);
 			path = HttpResponse;
 			sourceTree = "<group>";
@@ -336,6 +341,7 @@
 				A9E78BFA16E9803E006B80FD /* UNIHTTPResponse.m in Sources */,
 				A9E78BFB16E9803E006B80FD /* UNIHTTPStringResponse.m in Sources */,
 				A9E78BFC16E9803E006B80FD /* UNIJsonNode.m in Sources */,
+				FCBE0637B2092B97DE75B147 /* UNIHTTPResponseWrapper.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -392,7 +398,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 			};
@@ -414,7 +420,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
